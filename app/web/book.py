@@ -1,8 +1,8 @@
 from flask import jsonify, request
 from app.web import web     #  导入蓝图
 
-from helper import is_isbn_or_key
-from yushu_book import YuShuBook
+from app.libs.helper import is_isbn_or_key
+from app.spider.yushu_book import YuShuBook
 from app.forms.book import SearchForm
 
 
