@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 使用flask的URL_for()加载静态文件   -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+</head>
+<body>
+    {# 基础模板 #}
+    {% block head%}
+        <div>this is head</div>
+    {% endblock %}
+
+    {% block content%}
+        <h2>this is content</h2>
+    {% endblock %}
+
+    {% block foot%}
+        <div>this is foot</div>
+    {% endblock %}
+</body>
+</html>

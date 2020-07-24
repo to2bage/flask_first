@@ -12,7 +12,7 @@ def register_blueprint(app: Flask):
 
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__)   # 这里的__name__决定了应用程序的根目录是app, 而不是fish
     # 设置配置文件
     app.config.from_object("app.secure")
     app.config.from_object("app.setting")

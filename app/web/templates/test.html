@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+{{super()}}     {# 模板继承 #}
+
+<h2>to2bage</h2>
+
+{# 字典和对象的调用是一样的, 使用.来操作 #}
+<h3>{{data.name}} {{data.age}}</h3>
+
+{# if语句的使用 #}
+{% if data.age < 45 %}
+    {{"年龄小于45"}}
+{% elif data.age == 45 %}
+    {{"年龄是45"}}
+    {# 消息闪现, 要在配置文件中定义SECRET_KEY #}
+    {% set messages = get_flashed_messages() %}
+    {{ messages }}
+{% else %}
+    {{"年龄大于45"}}
+{% endif %}
+
+{# for循环语句 #}
+{% for fo in [1, 2, 3, 4] %}
+<li>{{fo}}</li>
+{%endfor%}
+
+{% for key, value in data.items() %}
+{{key}} :{{value}}
+{% endfor %}
+
+{# 过滤器 #}
+{{data.address | default("我在月球!!!")}}   {# default用来判断对象data是否有属性address, 如果没有则显示default中的数据 #}
+
+{# 消息闪现, 要在配置文件中定义SECRET_KEY #}
+{% set messages = get_flashed_messages() %}
+{{ message }}
+
+{% endblock %}

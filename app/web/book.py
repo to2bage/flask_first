@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, render_template, flash
 from app.web import web     #  导入蓝图
 import json
 
@@ -39,6 +39,30 @@ def search():
 
         # return json.dumps(result), 200, {"content-type": "application/json"}
         # return jsonify(books)
-        return json.dumps(books, default=lambda obj: obj.__dict__)
+        # return json.dumps(books, default=lambda obj: obj.__dict__)
+        # return render_template("search_result.html", books=books)
     else:
-        return jsonify(form.errors)
+        # return jsonify(form.errors)
+        flash("搜索的关键字不符合要求, 请重新输入关键字")
+    return render_template("search_result.html", books=books)
+
+
+
+@web.route("/book/<isbn>/detail")
+def book_detail(isbn):
+    pass
+
+
+
+
+#  以下是用于测试的
+@web.route("/test")
+def test_template():
+    r = {
+        "name": "to2bage",
+        "age": 45
+    }
+    flash("你好, Flask", category="error")      # 定义消息闪现, 在模板文件test.html中使用
+    flash("Hello 发了十块", category="warning")
+    # return jsonify(r)
+    return render_template("test.html", data=r)
