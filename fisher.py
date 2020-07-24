@@ -6,7 +6,10 @@ app = create_app()
 
 
 if __name__ == '__main__':
-    app.run(debug=app.config["DEBUG"], host="0.0.0.0")
+    # Threaded mode is enabled by default.
+    # app.run(debug=app.config["DEBUG"], host="0.0.0.0")
+    # 开启多线程
+    app.run(debug=app.config["DEBUG"], host="0.0.0.0", threaded=True)
 
 
 """
